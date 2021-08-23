@@ -136,7 +136,7 @@ class FeatureExtractor {
         // }
 
         // int pathLength = sourceStack.size() + targetStack.size() - 2 * commonPrefix;
-        int pathLength = sourceStack.size()
+        int pathLength = sourceStack.size();
 
 
         // length和width的限制条件只保留一个
@@ -151,10 +151,19 @@ class FeatureExtractor {
         //         return Common.EmptyString;
         //     }
         // }
-
-        for (int i = 0; i < sourceStack.size(); i++) {
+        int commonPrefix = 1;
+        for (int i = 0; i < sourceStack.size() - commonPrefix; i++) {
             Node currentNode = sourceStack.get(i);
             String childId = Common.EmptyString;
+            // System.out.println(i);
+            // System.out.println(sourceStack.size());
+            // System.out.println(currentNode);
+            // System.out.println(currentNode.getParentNode());
+            
+            if (currentNode.getParentNode().getUserData(Common.PropertyKey) == null) {
+                commonPrefix = sourceStack.size() - i;
+                break;
+            }
             String parentRawType = currentNode.getParentNode().getUserData(Common.PropertyKey).getRawType();
             if (i == 0 || s_ParentTypeToAddChildId.contains(parentRawType)) {
                 childId = saturateChildId(currentNode.getUserData(Common.ChildId))
@@ -164,7 +173,7 @@ class FeatureExtractor {
                     currentNode.getUserData(Common.PropertyKey).getType(true), childId, upSymbol));
         }
 
-        Node commonNode = sourceStack.get(sourceStack.size() - 1);
+        Node commonNode = sourceStack.get(sourceStack.size() - commonPrefix);
         String commonNodeChildId = Common.EmptyString;
         Property parentNodeProperty = commonNode.getParentNode().getUserData(Common.PropertyKey);
         String commonNodeParentRawType = Common.EmptyString;
