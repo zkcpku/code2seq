@@ -76,7 +76,7 @@ def ExtractFeaturesForDirsList(args, dirs):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument("-maxlen", "--max_path_length", dest="max_path_length", required=False, default=8)
+    parser.add_argument("-maxlen", "--max_path_length", dest="max_path_length", required=False, default=1000)
     parser.add_argument("-maxwidth", "--max_path_width", dest="max_path_width", required=False, default=2)
     parser.add_argument("-threads", "--num_threads", dest="num_threads", required=False, default=64)
     parser.add_argument("-j", "--jar", dest="jar", required=True)
