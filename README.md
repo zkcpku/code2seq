@@ -1,4 +1,13 @@
 # code2seq
+
+## EDIT:
+- 修改了JavaExtractor，从抽取任意两个节点间的路径，修改为抽取一个节点到root的路径
+- 根据这些路径信息，可以构造出ast树
+- 使用方法：
+`bash preprocess.py`
+`python path2ast.py`
+
+
 This is an official implementation of the model described in:
 
 [Uri Alon](http://urialon.cswp.cs.technion.ac.il), [Shaked Brody](http://www.cs.technion.ac.il/people/shakedbr/), [Omer Levy](https://levyomer.wordpress.com) and [Eran Yahav](http://www.cs.technion.ac.il/~yahave/), "code2seq: Generating Sequences from Structured Representations of Code" [[PDF]](https://openreview.net/pdf?id=H1gKYo09tX)
