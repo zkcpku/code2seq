@@ -4,7 +4,7 @@
 - 修改了JavaExtractor，从抽取任意两个节点间的路径，修改为抽取一个节点到root的路径
 - 根据这些路径信息，可以构造出ast树
 - 使用方法：
-`bash preprocess.py`
+`bash preprocess.sh`
 `python path2ast.py`
 
 
